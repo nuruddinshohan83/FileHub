@@ -1,8 +1,11 @@
 import express from "express"
 import mongoose from "mongoose"
-import userRoutes from "./Routes/UserRoutes.js"
 import bodyParser from "body-parser"
 import dotenv from "dotenv"
+
+import fileRoutes from "./routes/FileRoutes.js"
+import userRoutes from "./routes/UserRoutes.js"
+
 dotenv.config()
 const app = express()
 mongoose
@@ -14,8 +17,9 @@ mongoose
     console.error("Error connecting to MongoDB:", error)
   })
 app.use(bodyParser.json())
+app.use("/hub", express.static("./src/file"))
 app.use("/", userRoutes)
-
+app.use("/file", fileRoutes)
 app.listen(process.env.EXPRESS_PORT, () => {
   console.log("server is listening to port:" + process.env.EXPRESS_PORT)
 })

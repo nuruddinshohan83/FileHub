@@ -1,10 +1,10 @@
 import { Router } from "express"
-import User from "../Models/User.js"
+import User from "../models/User.js"
 import {
   getUserList,
   loginUser,
   registerUser,
-} from "../Controllers/userControllers.js"
+} from "../controllers/userControllers.js"
 let userRoutes = Router()
 
 userRoutes.get("/user", getUserList)

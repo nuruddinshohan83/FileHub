@@ -1,4 +1,4 @@
-import User from "../Models/User.js"
+import User from "../models/User.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 async function registerUser(req, res) {
@@ -32,9 +32,13 @@ async function loginUser(req, res) {
         if (err) {
           res.status(500).json({ error: err })
         } else if (result) {
-          let token = jwt.sign({ id: userExist.id }, process.env.TOKEN_SECRET, {
-            expiresIn: "1800h",
-          })
+          let token = jwt.sign(
+            { id: userExist._id },
+            process.env.TOKEN_SECRET,
+            {
+              expiresIn: "1800h",
+            }
+          )
           // console.log(token)
           res.status(200).json({
             message: "Login successful",
