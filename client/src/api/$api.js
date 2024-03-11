@@ -13,7 +13,7 @@ $api.interceptors.request.use((config) => {
   const token = decrypt(parsedData.token)
 
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`
+    config.headers.Authorization = `${token}`
   }
   config.headers.Accept = "application/json"
   return config

@@ -20,7 +20,7 @@ const upload = multer({ storage: storage })
 fileRoutes.get("/", verifyToken, async (req, res) => {
   let ownedFileList = await File.find({ owner: req.data.id })
   console.log(ownedFileList)
-  res.status(200).json(ownedFileList)
+  res.status(200).json({ data: [...ownedFileList] })
 })
 
 fileRoutes.post("/", verifyToken, upload.single("file"), async (req, res) => {
@@ -30,7 +30,7 @@ fileRoutes.post("/", verifyToken, upload.single("file"), async (req, res) => {
   console.log(req.data, "-------")
   let file = File({
     title: req.file.originalname,
-    location: "/file/" + req.file.filename,
+    location: "/hub/" + req.file.filename,
     fileName: req.file.filename,
     owner: req.data.id,
   })
