@@ -7,7 +7,7 @@ function defineRoutes(path, element) {
   return { path: path, element: element }
 }
 export default function allRoutes(user) {
-  // console.log(user)
+  console.log(user, "from route")
   return [
     defineRoutes("*", <PageNotFound></PageNotFound>),
     defineRoutes("/", user === undefined ? <Login /> : <Dashboard />),

@@ -1,4 +1,4 @@
-import { Button, Flex, Image, Navbar, Text } from "@mantine/core"
+import { Flex, Image, Navbar, Text } from "@mantine/core"
 import NavLinkCustom from "./NavLinkCustom"
 import FileHub from "./../../../assets/FileHub.png"
 import {
@@ -6,10 +6,8 @@ import {
   IconUsers,
   IconFileDescription,
 } from "@tabler/icons-react"
-import FileHubNavbar from "./FileHubNavbar"
-import { IconUpload } from "@tabler/icons-react"
 
-export default function NavbarComp({ opened }) {
+export default function FileHubNavbar({ opened }) {
   return (
     <Navbar
       p="md"
@@ -35,13 +33,12 @@ export default function NavbarComp({ opened }) {
           <Image maw={25} src={FileHub} alt="Random image" />
           <Text> FileHub</Text>
         </Flex>
-
-        <Button
-          leftIcon={<IconUpload size={"1.2rem"} />}
-          variant="light"
-          color="teal">
-          New
-        </Button>
+        <NavLinkCustom
+          label={""}
+          link={"/product"}
+          Icon={<IconShoppingCart size="1.5rem" stroke={2} />}
+          disabled={false}
+        />
       </Flex>
     </Navbar>
   )

@@ -2,6 +2,7 @@ import express from "express"
 import mongoose from "mongoose"
 import bodyParser from "body-parser"
 import dotenv from "dotenv"
+import cors from "cors"
 
 import fileRoutes from "./routes/FileRoutes.js"
 import userRoutes from "./routes/UserRoutes.js"
@@ -16,6 +17,11 @@ mongoose
   .catch((error) => {
     console.error("Error connecting to MongoDB:", error)
   })
+app.use(
+  cors({
+    origin: "*",
+  })
+)
 app.use(bodyParser.json())
 app.use("/hub", express.static("./src/file"))
 app.use("/", userRoutes)

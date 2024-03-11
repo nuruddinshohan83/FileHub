@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken"
 async function registerUser(req, res) {
   try {
     let { userName, password, email } = req.body
-    // console.log(userName, password, email)
+    console.log(userName, password, email, "-register-try")
     let userExist = await checkUserExist(userName)
     if (userExist) {
       res.status(210).json({ message: "user name already exit" })
@@ -18,13 +18,14 @@ async function registerUser(req, res) {
       })
     }
   } catch (err) {
+    console.log(userName, password, email, "register-catch")
     res.status(400).json({ message: err })
   }
 }
 async function loginUser(req, res) {
   try {
     let { userName, password } = req.body
-    // console.log("--try--", userName, password)
+    console.log(userName, password, "-login-try")
     let userExist = await checkUserExist(userName)
 
     if (userExist) {
@@ -42,16 +43,17 @@ async function loginUser(req, res) {
           // console.log(token)
           res.status(200).json({
             message: "Login successful",
-            token: token,
-            data: userExist,
+            data: { ...userExist._doc, token: token },
           })
         } else {
           res.status(401).json({ error: "Invalid username or password" })
         }
       })
     }
-  } catch {
-    console.log("--error login --")
+  } catch (error) {
+    let { userName, password } = req.body
+    console.log(userName, password, "-login-err-")
+    console.log(error)
   }
 }
 

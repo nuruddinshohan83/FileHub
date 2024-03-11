@@ -1,7 +1,7 @@
 import { Button, Checkbox, Flex, Group, TextInput } from "@mantine/core"
 import LoginForm from "../components/Login/LoginForm"
 
-export default function Login() {
+export default function Register() {
   return (
     <Flex
       direction="column"

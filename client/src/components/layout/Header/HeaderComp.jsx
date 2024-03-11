@@ -74,7 +74,7 @@ export default function HeaderComp({ opened, setOpened }) {
               <Menu.Item icon={<HiOutlineUserCircle size={18} />}>
                 <Group>
                   <Text fw="bold">Name:</Text>
-                  <Text>{userData?.name}</Text>
+                  <Text>{userData?.userName}</Text>
                 </Group>
               </Menu.Item>
               <Menu.Item icon={<HiOutlineMail size={18} />}>

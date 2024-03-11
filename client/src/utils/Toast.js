@@ -15,11 +15,11 @@ export function showAddProductSuccess() {
         autoClose: true,
     })
 }
-export function showAddProductError() {
+export function showLoginSuccess() {
     showNotification({
-        title: "Couldn't add product ",
+        title: "Logged in sucessfully",
         message: "",
-        color: "red",
+        color: "green",
         autoClose: true,
     })
 }
