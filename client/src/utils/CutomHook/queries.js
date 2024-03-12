@@ -4,7 +4,7 @@ import { getFileList } from "../../api/file"
 
 export function useGetFileList() {
   return useQuery({
-    queryKey: ["product"],
+    queryKey: ["fileList"],
     queryFn: () => getFileList(),
     enabled: true,
     cacheTime: 60 * 1000 * 60 * 0,

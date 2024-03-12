@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { AppShell, useMantineTheme, Flex } from "@mantine/core"
 import NavbarComp from "./Navbar/NavbarComp"
 import HeaderComp from "./Header/HeaderComp"
 
+let fileForm
 export default function DashboardLayout({ children }) {
   const theme = useMantineTheme()
   const [opened, setOpened] = useState(false)
+
   return (
     <AppShell
       styles={{
@@ -38,3 +40,4 @@ export default function DashboardLayout({ children }) {
     </AppShell>
   )
 }
+export { fileForm }
