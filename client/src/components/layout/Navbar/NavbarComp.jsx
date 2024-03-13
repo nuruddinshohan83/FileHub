@@ -37,7 +37,7 @@ export default function NavbarComp({ opened }) {
     formData.append("file", fileForm.values.file)
     console.log(formData.get("file"))
     axios
-      .post("http://localhost:3000/file", formData, {
+      .post(`${import.meta.env.VITE_BASE_URL}/file`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: userData.token,
@@ -63,40 +63,34 @@ export default function NavbarComp({ opened }) {
         border: "none",
       })}>
       <Flex direction="column" sx={{ width: "100%", height: "100%" }} gap={6}>
-        <form
-          enctype="multipart/form-data"
-          onSubmit={fileForm.onSubmit((values) => {
-            console.log(values.file, "----formsubmitted-----")
-          })}>
-          <Flex
-            py={16}
-            pl={12}
-            mb={20}
-            gap={12}
-            justify={"flex-start"}
-            align={"flex-start"}
-            // sx={{ border: "solid black 1px" }}
-          >
-            <Image maw={25} src={FileHub} alt="Random image" />
-            <Text> FileHub</Text>
-          </Flex>
-          <Group position="center">
-            <FileButton
-              accept="image/png,image/jpeg"
-              {...fileForm.getInputProps("file")}>
-              {(props) => (
-                <Button
-                  w={200}
-                  leftIcon={<IconUpload size={"1.2rem"} />}
-                  variant="light"
-                  color="teal"
-                  {...props}>
-                  Upload
-                </Button>
-              )}
-            </FileButton>
-          </Group>
-        </form>
+        <Flex
+          py={16}
+          pl={12}
+          mb={20}
+          gap={12}
+          justify={"flex-start"}
+          align={"flex-start"}
+          // sx={{ border: "solid black 1px" }}
+        >
+          <Image maw={25} src={FileHub} alt="Random image" />
+          <Text> FileHub</Text>
+        </Flex>
+        <Group position="center">
+          <FileButton
+            accept="image/png,image/jpeg"
+            {...fileForm.getInputProps("file")}>
+            {(props) => (
+              <Button
+                w={200}
+                leftIcon={<IconUpload size={"1.2rem"} />}
+                variant="light"
+                color="teal"
+                {...props}>
+                Upload
+              </Button>
+            )}
+          </FileButton>
+        </Group>
       </Flex>
     </Navbar>
   )
